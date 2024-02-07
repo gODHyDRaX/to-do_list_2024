@@ -1,43 +1,40 @@
-let tareas= [
-    {
-        estado : true,
-        id : 1,
-        texto : "Quitar todos lo tornillos de la tapa" 
-    },
-    {
-        estado : false,
-        id : 2,
-        texto : "Levantar la tapa con cuidado" 
-    },
-    {
-        estado : true,
-        id : 3,
-        texto : "Desconectar la bateria" 
-    },
-    {
-        estado : false,
-        id : 4,
-        texto : "Identificar componentes" 
-    },
-]
+import { tareas } from "./data_to_do.js";
 
 function cargar_tareas(){
-    let cuadro_de_tareas = document.querySelector(".root")
+    let cuadro_de_tareas = document.querySelector(".lista_tareas")
     tareas.forEach((cada_tarea) => {
         let div_tarea = document.createElement("div")
         div_tarea.classList.add("div_tareas")
-        if(cada_tarea.estado){
-        div_tarea.innerHTML = `
-        <p class="text">${cada_tarea.texto}</p>
-        <div class="estado">[/]</div>
-        `;}else{
-            div_tarea.innerHTML = `
-        <p class="text">${cada_tarea.texto}</p>
-        <div class="estado">[x]</div>
-        `;
+            if(cada_tarea.estado){
+                div_tarea.innerHTML = `
+                <p class="text">${cada_tarea.texto}</p>
+                <div class="estado">[/]</div>
+                `;}else{
+                div_tarea.innerHTML = `
+                <p class="text">${cada_tarea.texto}</p>
+                <div class="estado">[x]</div>
+                `;
         }
         cuadro_de_tareas.appendChild(div_tarea);
 
     })
 }
 cargar_tareas();
+
+function cargar_botones(){
+    let caja_botones = document.querySelector(".botones");
+    caja_botones.innerHTML = `<div class="btn_mas"> + </div>`
+
+
+}
+cargar_botones();
+function cargar_formulario(){
+    let ventana_formulario = document.querySelector(".formulario")
+    ventana_formulario.classList.add("activar_b")
+    ventana_formulario.innerHTML = ` `
+    
+}
+
+// programacion del boton
+let btn_formulario = document.querySelector(".btn_mas")
+btn_formulario.addEventListener("click", cargar_formulario);
